@@ -1,0 +1,24 @@
+{
+  "name": "ysaccount/gugu",
+  "description": "银盛支付账户类对接PHP包",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "cader",
+      "email": "1028914082@qq.com"
+    }
+  ],
+  "autoload": {
+    "classmap": [
+      "./"
+    ],
+    "psr-4": {
+      "Yspay\\Yzt\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.2",
+    "phpunit/phpunit": "9.*"
+  }
+}
