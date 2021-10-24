@@ -144,7 +144,7 @@ class Common
      */
     function post_url($url, $headParams, $flag, $aeskey)
     {
-        echo PHP_EOL. "渠道请求参数" . stripslashes(json_encode($headParams,JSON_UNESCAPED_UNICODE)).PHP_EOL;
+        //echo PHP_EOL. "渠道请求参数" . stripslashes(json_encode($headParams,JSON_UNESCAPED_UNICODE)).PHP_EOL;
         $responses = new Response();
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_POST, 1);
@@ -163,12 +163,12 @@ class Common
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
         $response = curl_exec($ch);
-        var_dump(PHP_EOL."POST请求响应信息".$response.PHP_EOL);
+        //var_dump(PHP_EOL."POST请求响应信息".$response.PHP_EOL);
         if (curl_errno($ch)) {
             $curl_errno = curl_errno($ch);
             var_dump($curl_errno);
             curl_close($ch);
-            echo "请求失败";
+            //echo "请求失败";
             if ($flag) {
                 $responses->code = $this->param['unknow'];
                 $responses->msg = $this->param['unknowMsg'];
@@ -180,7 +180,7 @@ class Common
         } else {
             $autoChangeCode = $this->autoChangeCode($response);
             $response = json_decode(base64_decode($autoChangeCode), true);
-            echo PHP_EOL. "渠道响应报文" . stripslashes(json_encode($response,JSON_UNESCAPED_UNICODE)) . PHP_EOL;
+            //echo PHP_EOL. "渠道响应报文" . stripslashes(json_encode($response,JSON_UNESCAPED_UNICODE)) . PHP_EOL;
             if ($response["sign"] != null) {
                 $sign = $response["sign"];
                 $datas = array();
@@ -196,14 +196,14 @@ class Common
 
                 // 验证签名 仅作基础验证
                 if ($this->sign_check($sign, $data) == true) {
-                    var_dump("验证签名成功!");
+                    //var_dump("验证签名成功!");
                     if (isset($response['data'])) {
                         $response['data'] = $this->msgAesDecrypt($response['data'], $aeskey);
                     }
 
                     return Response::fromMap($response);
                 } else {
-                    var_dump('验证签名失败!');
+                    //var_dump('验证签名失败!');
                     $responses->code = $this->param['errorCode'];
                     $responses->msg = $this->param['sign_verify'];
                     return $responses;
@@ -279,14 +279,14 @@ class Common
             $return = array('success' => 0, 'msg' => '', 'check' => '');
             $pkcs12 = file_get_contents($MERCHANT_PRX);
             if (openssl_pkcs12_read($pkcs12, $certs, $MERCHANT_PRX_PWD)) {
-                var_dump('证书,密码,正确读取');
+                //var_dump('证书,密码,正确读取');
                 $privateKey = $certs['pkey'];
                 $publicKey = $certs['cert'];
                 $signedMsg = "";
                 // print_r("加密密钥" . $privateKey);
-                echo "加密数据" . $input['data'];
+                //echo "加密数据" . $input['data'];
                 if (openssl_sign($input['data'], $signedMsg, $privateKey, OPENSSL_ALGO_SHA256)) {
-                    echo '签名正确生成';
+                    //echo '签名正确生成';
                     $return['success'] = 1;
                     $return['check'] = base64_encode($signedMsg);
                     $return['msg'] = base64_encode($input['data']);

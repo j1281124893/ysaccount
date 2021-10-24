@@ -46,7 +46,6 @@ class Merchant
             $bizReqJson = MerchantRequest::build($this->kernel, $model);
             $headParams = $this->common->encodeParams($headParams, $bizReqJson, $aes_key);
             $url = $this->kernel->url . $this->common->param['getYsTokenUrl'];
-            var_dump($headParams);
             return $this->common->post_Url($url, $headParams, false, $aes_key);
         } catch (Exception $e) {
             $responses = new Response();
@@ -85,7 +84,6 @@ class Merchant
             $headParams['sign'] = trim($sign['check']);
             $headParams['file'] = $curl_file;
             $url = $this->kernel->url . $this->common->param['uploadPictureUrl'];
-            var_dump($headParams);
             return $this->common->post_Url($url, $headParams, false, $aes_key);
         } catch (Exception $e) {
             $responses = new Response();
@@ -114,7 +112,6 @@ class Merchant
             $bizReqJson = MerchantRequest::build($this->kernel, $model);
             $headParams = $this->common->encodeParams($headParams, $bizReqJson, $aes_key);
             $url = $this->kernel->url . $this->common->param['queryMerchantUrl'];
-            var_dump($headParams);
             return $this->common->post_Url($url, $headParams, false, $aes_key);
         } catch (Exception $e) {
             $responses = new Response();
@@ -142,7 +139,6 @@ class Merchant
             $bizReqJson = MerchantRegistryRequest::build($this->kernel, $model);
             $headParams = $this->common->encodeParams($headParams, $bizReqJson, $aes_key);
             $url = $this->kernel->url . $this->common->param['merchantRegistryUrl'];
-            var_dump($headParams);
             return $this->common->post_Url($url, $headParams, false, $aes_key);
         } catch (Exception $e) {
             $responses = new Response();
@@ -171,7 +167,6 @@ class Merchant
             $bizReqJson = $this->common->unsetArry($bizReqJson);
             $headParams = $this->common->encodeParams($headParams, $bizReqJson, $aes_key);
             $url = $this->kernel->url . $this->common->param['merchantReportUrl'];
-            var_dump($headParams);
             return $this->common->post_Url($url, $headParams, false, $aes_key);
         } catch (Exception $e) {
             $responses = new Response();
@@ -199,7 +194,6 @@ class Merchant
             $bizReqJson = MerchantReportQueryRequest::build($this->kernel, $model);
             $headParams = $this->common->encodeParams($headParams, $bizReqJson, $aes_key);
             $url = $this->kernel->url . $this->common->param['merchantReportQueryUrl'];
-            var_dump($headParams);
             return $this->common->post_Url($url, $headParams, false, $aes_key);
         } catch (Exception $e) {
             $responses = new Response();
