@@ -97,7 +97,7 @@ class Common
     public function unsetArry($bizReqJson)
     {
         foreach ($bizReqJson as $k => $v) {
-            if (!$v)
+            if (is_null($v))
                 unset($bizReqJson[$k]);
         }
         return $bizReqJson;
