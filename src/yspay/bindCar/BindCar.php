@@ -46,12 +46,11 @@ class BindCar
             $bizReqJson = BindingBankCardRequest::build($this->kernel, $model);
             $headParams = $this->common->encodeParams($headParams, $bizReqJson, $aes_key);
             $url = $this->kernel->url . $this->common->param['bindingBankCardUrl'];
-            var_dump($headParams);
             return $this->common->post_Url($url, $headParams, false, $aes_key);
         } catch (Exception $e) {
             $responses = new Response();
             $responses->code = $this->common->param['errorCode'];
-            $responses->msg = $e->getMessage();;
+            $responses->msg = $e->getMessage();
             return $responses;
         }
     }
@@ -76,12 +75,11 @@ class BindCar
             $bizReqJson = ConfirmAndBindingCardRequest::build($this->kernel, $model);
             $headParams = $this->common->encodeParams($headParams, $bizReqJson, $aes_key);
             $url = $this->kernel->url . $this->common->param['confirmAndBindingCardUrl'];
-            var_dump($headParams);
             return $this->common->post_Url($url, $headParams, false, $aes_key);
         } catch (Exception $e) {
             $responses = new Response();
             $responses->code = $this->common->param['errorCode'];
-            $responses->msg = $e->getMessage();;
+            $responses->msg = $e->getMessage();
             return $responses;
         }
     }
@@ -105,12 +103,11 @@ class BindCar
             $bizReqJson = UserBindingCardListRequest::build($this->kernel, $model);
             $headParams = $this->common->encodeParams($headParams, $bizReqJson, $aes_key);
             $url = $this->kernel->url . $this->common->param['userBindingCardListUrl'];
-            var_dump($headParams);
             return $this->common->post_Url($url, $headParams, false, $aes_key);
         } catch (Exception $e) {
             $responses = new Response();
             $responses->code = $this->common->param['errorCode'];
-            $responses->msg = $e->getMessage();;
+            $responses->msg = $e->getMessage();
             return $responses;
         }
     }
@@ -134,12 +131,11 @@ class BindCar
             $bizReqJson = UnbindBankCard::build($this->kernel, $model);
             $headParams = $this->common->encodeParams($headParams, $bizReqJson, $aes_key);
             $url = $this->kernel->url . $this->common->param['unbindBankCardUrl'];
-            var_dump($headParams);
             return $this->common->post_Url($url, $headParams, false, $aes_key);
         } catch (Exception $e) {
             $responses = new Response();
             $responses->code = $this->common->param['errorCode'];
-            $responses->msg = $e->getMessage();;
+            $responses->msg = $e->getMessage();
             return $responses;
         }
     }
@@ -159,20 +155,14 @@ class BindCar
             }
             $aes_key = $this->common->randomKey();
             $headParams = $this->common->commonHeads('cardInfomation', $this->kernel, $aes_key);
-            $bizReqJson = array(
-                "appSecret" => $this->kernel->appSecret,
-                "appUserCode" => $model->appUserCode,
-                "bankAccountNo" => $model->bankAccountNo,
-            );
             $bizReqJson = CardInformationRequest::build($this->kernel, $model);
             $headParams = $this->common->encodeParams($headParams, $bizReqJson, $aes_key);
             $url = $this->kernel->url . $this->common->param['cardInformationUrl'];
-            var_dump($headParams);
             return $this->common->post_Url($url, $headParams, false, $aes_key);
         } catch (Exception $e) {
             $responses = new Response();
             $responses->code = $this->common->param['errorCode'];
-            $responses->msg = $e->getMessage();;
+            $responses->msg = $e->getMessage();
             return $responses;
         }
     }
