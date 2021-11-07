@@ -45,7 +45,6 @@ class Transfer
             $bizReqJson = TransferPayRegisterRequest::build($this->kernel, $model);
             $headParams = $this->common->encodeParams($headParams, $bizReqJson, $aes_key);
             $url = $this->kernel->url . $this->common->param['transferPayRegisterUrl'];
-            var_dump($headParams);
             return $this->common->post_Url($url, $headParams, false, $aes_key);
         } catch (Exception $e) {
             $responses = new Response();
@@ -75,7 +74,6 @@ class Transfer
             $bizReqJson = TransferPayConfirmRequset::build($this->kernel, $model);
             $headParams = $this->common->encodeParams($headParams, $bizReqJson, $aes_key);
             $url = $this->kernel->url . $this->common->param['transferPayConfirmUrl'];
-            var_dump($headParams);
             return $this->common->post_Url($url, $headParams, false, $aes_key);
         } catch (Exception $e) {
             $responses = new Response();
@@ -105,7 +103,6 @@ class Transfer
             $bizReqJson = EBillDownloadRequest::build($this->kernel, $model);
             $headParams = $this->common->encodeParams($headParams, $bizReqJson, $aes_key);
             $url = $this->kernel->url . $this->common->param['innerTransferBillUrl'];
-            var_dump($headParams);
             return $this->common->post_Url($url, $headParams, false, $aes_key);
         } catch (Exception $e) {
             $responses = new Response();
