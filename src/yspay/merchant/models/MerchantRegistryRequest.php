@@ -189,6 +189,7 @@ class MerchantRegistryRequest
     public static function build($kernel ,$model){
         $bizReqJson = array(
             "appSecret" => $kernel->appSecret,
+            'appUserCode' => $model->appUserCode,
             'userCode' => $model->userCode,
             'custname' => $model->custname,
             'certifitype' => $model->certifitype,
