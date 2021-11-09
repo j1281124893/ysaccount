@@ -223,7 +223,18 @@ class MerchantRegistryRequest
             'companyAddress' => $model->companyAddress,
             'bsLicenseEffect' => $model->bsLicenseEffect,
             'picIds' => $model->picIds,
-
+            'lawyerCredentialEffect'  => $model->lawyerCredentialEffect,
+            'lawyerCredentialExpired' => $model->lawyerCredentialExpired,
+            'businessLicenseCode' => $model->businessLicenseCode,
+            'district' => $model->district,
+            'businessLicenseEffect' => $model->businessLicenseEffect,
+            'businessLicenseExpired' => $model->businessLicenseExpired,
+            'businessAddress' => $model->businessAddress,
+            'lawyerName' => $model->lawyerName,
+            'lawyerCredentialId' => $model->lawyerCredentialId,
+            'accountType' => $model->accountType,
+            'accountName' => $model->accountName,
+            'accountNo' => $model->accountNo,
 
         );
         return $bizReqJson;
