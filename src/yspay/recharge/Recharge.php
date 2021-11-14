@@ -45,7 +45,6 @@ class Recharge
             $bizReqJson = RechargeBusinessEnregisterRequest::build($this->kernel, $model);
             $headParams = $this->common->encodeParams($headParams, $bizReqJson, $aes_key);
             $url = $this->kernel->url . $this->common->param['businessEnregisterUrl'];
-            var_dump($headParams);
             return $this->common->post_Url($url, $headParams, false, $aes_key);
         } catch (Exception $e) {
             $responses = new Response();
@@ -75,7 +74,6 @@ class Recharge
 
             $headParams = $this->common->encodeParams($headParams, $bizReqJson, $aes_key);
             $url = $this->kernel->url . $this->common->param['etpRechargeRegisterUrl'];
-            var_dump($headParams);
             return $this->common->post_Url($url, $headParams, false, $aes_key);
         } catch (Exception $e) {
             $responses = new Response();
